@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Puzzler_Game.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Label
+                Text="Welcome to the Sliding Puzzle Game!"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label Text="Choose your level to start playing!"
+                   Style="{StaticResource SubHeadline}"
+                   SemanticProperties.HeadingLevel="Level2"/>
+
+            <Button Text="Easy" 
+                    Clicked="OnEasyClicked" 
+                    HorizontalOptions="Fill" />
+
+            <Button Text="Medium" 
+                    Clicked="OnMediumClicked"
+                    HorizontalOptions="Fill" />
+
+            <Button Text="Hard"
+                    Clicked="OnHardClicked" 
+                    HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

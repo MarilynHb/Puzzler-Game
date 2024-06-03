@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Puzzler_Game"
+             x:Class="Puzzler_Game.BoardView"
+             xmlns:vm="clr-namespace:Puzzler_Game"
+             x:DataType="vm:BoardViewModel"
+             Title="Board">
+ 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <CollectionView ItemsSource="{Binding Tiles}" 
+                        x:Name="BoardBox"
+                        ItemsLayout="{Binding TilesLayout}"
+                        SelectedItem="{Binding SelectedTile}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding SwipeTiles}"
+                        HeightRequest="700"
+                        WidthRequest="700"
+                        Margin="0,200,0,0">
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="Purple" Padding="20" x:DataType="vm:Puzzle">
+                        <!--<Image Source="{Binding Image}" Aspect="AspectFill"/>-->
+                        <Label Text="{Binding Value}" FontSize="Small">
+                    </Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!--<Image Source="{Binding ThisImage}" Grid.Row="0" Aspect="Center"/>-->
+
+        <Button Text="Home" 
+                Grid.Row="1"
+                Clicked="OnHomeClicked" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Start" />
+    </Grid>
+</ContentPage>
