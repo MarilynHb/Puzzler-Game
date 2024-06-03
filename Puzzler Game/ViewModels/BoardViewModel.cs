@@ -61,11 +61,9 @@ public class BoardViewModel : ViewModel
             return swapTiles;
         }
     }
-    int count;
     void DoSwapTile()
     {
-        count++;
-        if (selectedTile == null || selectedTile.Value == Board.EmptyFieldIndex) return;
+        if (selectedTile == null || selectedTile.Index == Board.EmptyFieldIndex || Board.IsSolved) return;
         var options = Board.GetPossibleMoves();
         if (options.Contains(SelectedTile.Index))
         {

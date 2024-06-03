@@ -21,7 +21,7 @@ public class Board
             var i = indexes[index];
             indexes.RemoveAt(index);
 
-            tiles.Add(new Puzzle(value, i));
+            tiles.Add(new Puzzle(value, i, value == totalTiles - 1));
         }
         // Add the empty tile
         //tiles.Add(new Puzzle(totalTiles, totalTiles / (int)level, totalTiles % (int)level));
@@ -31,6 +31,7 @@ public class Board
     public List<Puzzle> GameState { get; set; }
     public int GridSize = 3;
     public int EmptyFieldIndex => GameState.FindIndex(t => t.Value == 8);
+    public bool IsSolved => GameState.All(t => t.Value == t.Index);
 
     #region Get Possible Moves
     private int GetRowNumber(int index, int gridSize) => index / gridSize;
@@ -58,7 +59,7 @@ public class Board
     {
         var tempPuzzle = GameState[index1];
         GameState[index1].Index = GameState[index2].Index;
-        GameState[index2].Index = tempPuzzle.Index;
+        GameState[index2].Index = index1;
         GameState = GameState.OrderBy(t => t.Index).ToList();
     }
     #endregion
