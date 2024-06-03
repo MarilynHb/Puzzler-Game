@@ -31,20 +31,20 @@
                         SelectedItem="{Binding SelectedTile}"
                         SelectionMode="Single"
                         SelectionChangedCommand="{Binding SwipeTiles}"
-                        HeightRequest="400"
-                        WidthRequest="400"
+                        HeightRequest="300"
+                        WidthRequest="300"
                         Grid.Row="1">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="20" x:DataType="vm:Puzzle">
+                    <Grid x:DataType="vm:Puzzle">
                         <Grid.Triggers>
                             <DataTrigger TargetType="Grid" Binding="{Binding IsEmpty}" Value="False">
                                 <Setter Property="BackgroundColor" Value="MediumPurple" />
                             </DataTrigger>
                         </Grid.Triggers>
                         <!--<Image Source="{Binding Image}" Aspect="AspectFill"/>-->
-                        <Label Text="{Binding Name}" FontSize="Small" FontAttributes="Bold">
+                        <Label Text="{Binding Name}" FontSize="Small" FontAttributes="Bold" Padding="20">
                         </Label>
                     </Grid>
                 </DataTemplate>
@@ -52,10 +52,9 @@
         </CollectionView>
 
         <!--<Image Source="{Binding ThisImage}" Grid.Row="0" Aspect="Center"/>-->
-        <!--<Label Text="You Solved the Puzzle!!" 
-               x:DataType="vm:Board"
+        <Label Text="{Binding Solved}" 
                Grid.Row="2"
-               IsVisible="{Binding IsSolved, Converter={StaticResource BooleanToVisibilityConverter}}" />-->
+               HorizontalOptions="Center"/>
 
     </Grid>
 </ContentPage>

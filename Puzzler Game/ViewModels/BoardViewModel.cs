@@ -25,6 +25,20 @@ public class BoardViewModel : ViewModel
     #region Properties
     private Board Board { get; set; }
     public ObservableCollection<Puzzle> Tiles => new(Board.GameState);
+
+    private string solved { get; set; }
+    public string Solved
+    {
+        get => solved;
+        set
+        {
+            if (solved != value)
+            {
+                solved = value;
+                OnPropertyChanged(nameof(Solved));
+            }
+        }
+    }
     #endregion
 
     #region Load Images (Not Implemented Now)
@@ -63,7 +77,16 @@ public class BoardViewModel : ViewModel
     }
     void DoSwapTile()
     {
-        if (selectedTile == null || selectedTile.Index == Board.EmptyFieldIndex || Board.IsSolved) return;
+        if (selectedTile == null || selectedTile.Index == Board.EmptyFieldIndex) return;
+        if (Board.IsSolved)
+        {
+            Solved = "You solved the puzzle!";
+            return;
+        }
+        else
+        {
+            solved = null;
+        }
         var options = Board.GetPossibleMoves();
         if (options.Contains(SelectedTile.Index))
         {
