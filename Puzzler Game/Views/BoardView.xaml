@@ -31,9 +31,8 @@
                         SelectedItem="{Binding SelectedTile}"
                         SelectionMode="Single"
                         SelectionChangedCommand="{Binding SwipeTiles}"
-                        HeightRequest="700"
-                        WidthRequest="700"
-                        Margin="0,200,0,0"
+                        HeightRequest="400"
+                        WidthRequest="400"
                         Grid.Row="1">
 
             <CollectionView.ItemTemplate>
@@ -41,11 +40,11 @@
                     <Grid Padding="20" x:DataType="vm:Puzzle">
                         <Grid.Triggers>
                             <DataTrigger TargetType="Grid" Binding="{Binding IsEmpty}" Value="False">
-                                <Setter Property="BackgroundColor" Value="Purple" />
+                                <Setter Property="BackgroundColor" Value="MediumPurple" />
                             </DataTrigger>
                         </Grid.Triggers>
                         <!--<Image Source="{Binding Image}" Aspect="AspectFill"/>-->
-                        <Label Text="{Binding Name}" FontSize="Small">
+                        <Label Text="{Binding Name}" FontSize="Small" FontAttributes="Bold">
                         </Label>
                     </Grid>
                 </DataTemplate>

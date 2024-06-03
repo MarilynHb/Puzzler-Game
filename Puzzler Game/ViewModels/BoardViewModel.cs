@@ -68,7 +68,6 @@ public class BoardViewModel : ViewModel
         if (options.Contains(SelectedTile.Index))
         {
             Board.SwapPuzzle(Board.EmptyFieldIndex, SelectedTile.Index);
-            Load(Board);
         }
         SelectedTile = null;
         OnPropertyChanged(nameof(Board));

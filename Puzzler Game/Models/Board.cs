@@ -26,11 +26,12 @@ public class Board
         // Add the empty tile
         //tiles.Add(new Puzzle(totalTiles, totalTiles / (int)level, totalTiles % (int)level));
         GameState = tiles.OrderBy(t => t.Index).ToList();
+        GridSize = (int)level;
     }
 
     public List<Puzzle> GameState { get; set; }
-    public int GridSize = 3;
-    public int EmptyFieldIndex => GameState.FindIndex(t => t.Value == 8);
+    public int GridSize;
+    public int EmptyFieldIndex => GameState.FindIndex(t => t.IsEmpty);
     public bool IsSolved => GameState.All(t => t.Value == t.Index);
 
     #region Get Possible Moves
